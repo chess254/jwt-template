@@ -40,6 +40,7 @@ class AuthController extends Controller
      */
 
      public function me(){
+        //  if(auth()->validate()){}
          return response()->json(auth()->user());
      }
 
@@ -49,7 +50,8 @@ class AuthController extends Controller
     */
 
     public  function logout(){
-        auth()->logout();
+        auth()->logout(true);
+        auth()->invalidate(true);
         return response()->json(['message' => 'successfuly logged out']);
     }
 
